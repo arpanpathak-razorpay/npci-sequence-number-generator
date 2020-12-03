@@ -34,9 +34,17 @@ public class FrequencyGenerator {
 					);
 				
 			case FORTNIGHTLY:
+				// TODO
 				return 0;
 			case MONTHLY:
+				// TODO
 				return 0;
+				
+			case YEARLY:
+				return 1 + DateHelpers.getDifferenceYears(
+						payment.getCurrentDate(), 
+						payment.getFirstPaymentDate()
+					);
 			default:
 				return -1;
 		}

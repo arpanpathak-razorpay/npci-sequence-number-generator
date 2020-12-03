@@ -8,7 +8,9 @@ package com.npci.sequencegenerator.helpers;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class DateHelpers {
@@ -34,14 +36,14 @@ public class DateHelpers {
 	
 	/***
 	 * Get difference in days between two dates
-	 * @param d1
-	 * @param d2
+	 * @param first
+	 * @param last
 	 * @return long difference in days
 	 */
-	public static long getDifferenceDays(Date d1, Date d2) {
+	public static long getDifferenceDays(Date first, Date last) {
 		
 		// Get the timestamp Difference between two dates
-	    long diff = d2.getTime() - d1.getTime();
+	    long diff = first.getTime() - last.getTime();
 	    
 	    // Return UNIX time stamp difference / total MILLISECONDS in a day
 	    return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
@@ -53,13 +55,38 @@ public class DateHelpers {
 	 * @param d2
 	 * @return long difference in days
 	 */
-	public static long getDifferenceWeeks(Date d1, Date d2) {
+	public static long getDifferenceWeeks(Date first, Date last) {
 		
 		// Get the timestamp Difference between two dates
-	    long diff = d2.getTime() - d1.getTime();
+	    long diff = first.getTime() - last.getTime();
 	    
-	    // Return 
+	    // Return timestamp difference / 7
 	    return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)/7;
+	}
+	
+	public static long getDifferenceYears(Date first, Date last) {
+		
+		// Get Calendar for first and last date
+		Calendar a = getCalendar(first);
+	    Calendar b = getCalendar(last);
+	    
+	    int diff = b.get(Calendar.YEAR) - a.get(Calendar.YEAR);
+	    
+	    // If Month of a is greater than b or 
+	    // both are in same month but Day of a is greater than b then we need to subtract
+	    // 1 from result since we are calculating difference between years first
+	    if (a.get(Calendar.MONTH) > b.get(Calendar.MONTH) || 
+	        (a.get(Calendar.MONTH) == b.get(Calendar.MONTH) 
+	        && a.get(Calendar.DATE) > b.get(Calendar.DATE))) {
+	        diff--;
+	    }
+	    return diff;
+	}
+	
+	public static Calendar getCalendar(Date date) {
+	    Calendar cal = Calendar.getInstance(Locale.US);
+	    cal.setTime(date);
+	    return cal;
 	}
 	
 	public static void main(String[] args) {
