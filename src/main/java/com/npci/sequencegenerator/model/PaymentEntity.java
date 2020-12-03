@@ -8,6 +8,7 @@ package com.npci.sequencegenerator.model;
 import java.util.Date;
 
 import com.npci.sequencegenerator.constants.Frequencies;
+import com.npci.sequencegenerator.helpers.DateHelpers;
 
 public class PaymentEntity {
 	
@@ -17,15 +18,16 @@ public class PaymentEntity {
 	// Factory Method with firstPaymentDate and frequency
 	public static PaymentEntity getInstance(String firstPaymentDate, Frequencies frequency) {
 		return new PaymentEntity()
-				.setFirstPaymentDate(new Date(firstPaymentDate))
+				.setFirstPaymentDate(DateHelpers.parseDate(firstPaymentDate))
 				.setFrequency(frequency);	
 					
 	}
 	
-	public static PaymentEntity getInstance(
-			String firstPaymentDate, String currentDate, Frequencies frequency) {
+	// Factory Method with firstPaymentDate and frequency
+	public static PaymentEntity getInstance(String firstPaymentDate, String currentDate, Frequencies frequency) {
 		return new PaymentEntity()
-				.setFirstPaymentDate(new Date(firstPaymentDate))
+				.setFirstPaymentDate(DateHelpers.parseDate(firstPaymentDate))
+				.setCurrentDate(DateHelpers.parseDate(currentDate))
 				.setFrequency(frequency);	
 	}
 
