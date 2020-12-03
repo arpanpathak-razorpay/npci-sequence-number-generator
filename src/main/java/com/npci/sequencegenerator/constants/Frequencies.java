@@ -13,5 +13,6 @@ public enum Frequencies {
 	FORTNIGHTLY,
 	QUARTERLY, 
 	HALF_YEARLY, 
-	YEARLY
+	YEARLY,
+	AS_PRESENTED
 }

@@ -5,8 +5,7 @@
  */
 package com.npci.sequencegenerator.service;
 
-import java.util.Date;
-
+import com.npci.sequencegenerator.helpers.DateHelpers;
 import com.npci.sequencegenerator.model.PaymentEntity;
 
 public class FrequencyGenerator {
@@ -17,14 +16,26 @@ public class FrequencyGenerator {
 	 * @param payment PaymentEntity 
 	 * @return
 	 */
-	public int generateFrequency(PaymentEntity payment) {
+	public long generateFrequency(PaymentEntity payment) {
 		
 		// No no currentDate provided in payment then take Current Unix Timestamp
-		int frequency = -1;
 		
 		switch (payment.getFrequency()) {
-			
+			case DAILY:
+				return 1 + DateHelpers.getDifferenceDays(
+							payment.getCurrentDate(), 
+							payment.getFirstPaymentDate()
+						);
+			case WEEKLY:
+				return 0;
+			case FORTNIGHTLY:
+				return 0;
+			case MONTHLY:
+				return 0;
+			default:
+				return -1;
 		}
-		return -1;
+		
 	}
+	
 }
