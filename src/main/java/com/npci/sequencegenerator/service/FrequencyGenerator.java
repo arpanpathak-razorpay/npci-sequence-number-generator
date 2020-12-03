@@ -25,9 +25,14 @@ public class FrequencyGenerator {
 				return 1 + DateHelpers.getDifferenceDays(
 							payment.getCurrentDate(), 
 							payment.getFirstPaymentDate()
+							
 						);
 			case WEEKLY:
-				return 0;
+				return 1 + DateHelpers.getDifferenceWeeks(
+						payment.getCurrentDate(), 
+						payment.getFirstPaymentDate()
+					);
+				
 			case FORTNIGHTLY:
 				return 0;
 			case MONTHLY:

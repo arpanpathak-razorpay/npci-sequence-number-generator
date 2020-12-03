@@ -43,7 +43,7 @@ public class DateHelpers {
 		// Get the timestamp Difference between two dates
 	    long diff = d2.getTime() - d1.getTime();
 	    
-	    // Return 
+	    // Return UNIX time stamp difference / total MILLISECONDS in a day
 	    return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 	
@@ -59,11 +59,11 @@ public class DateHelpers {
 	    long diff = d2.getTime() - d1.getTime();
 	    
 	    // Return 
-	    return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+	    return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)/7;
 	}
 	
-//	public static void main(String[] args) {
-//
-//		System.out.println(getDifferenceDays(parseDate("10-11-2020"),parseDate("10-11-2020")) );
-//	}
+	public static void main(String[] args) {
+		
+	}
+	
 }
