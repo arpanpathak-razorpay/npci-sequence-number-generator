@@ -1,0 +1,10 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.npci</groupId>
+  <artifactId>sequence-number-generator</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Sequence Number Generator</name>
+  <description>In order to make recurring payments, NPCI is asking us to send the sequence number for the payment. Sequence number is dependent on the frequency of the recurring payment. NPCI allows multiple frequencies like daily, weekly, monthly, fortnightly, quarterly, half-yearly and yearly.
+Now sequence number is the count of frequency periods between the current date and the first payment date including the first payment. Examples,
+</description>
+</project>
